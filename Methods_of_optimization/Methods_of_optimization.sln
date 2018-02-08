@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1", "Lab1\Lab1.csproj", "{9BDB6418-9A06-48AE-AAA4-E1CE0BECBE17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiDimensionalOptimization", "MultiDimensionalOptimization\MultiDimensionalOptimization.csproj", "{B3A3AA4B-902A-4281-8FE7-D545A8CD6A91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector", "Vector\Vector.csproj", "{43D57191-E37A-4C9D-9A14-9A13E87DA73E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BDB6418-9A06-48AE-AAA4-E1CE0BECBE17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BDB6418-9A06-48AE-AAA4-E1CE0BECBE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BDB6418-9A06-48AE-AAA4-E1CE0BECBE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BDB6418-9A06-48AE-AAA4-E1CE0BECBE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A3AA4B-902A-4281-8FE7-D545A8CD6A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A3AA4B-902A-4281-8FE7-D545A8CD6A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A3AA4B-902A-4281-8FE7-D545A8CD6A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A3AA4B-902A-4281-8FE7-D545A8CD6A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D57191-E37A-4C9D-9A14-9A13E87DA73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D57191-E37A-4C9D-9A14-9A13E87DA73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D57191-E37A-4C9D-9A14-9A13E87DA73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D57191-E37A-4C9D-9A14-9A13E87DA73E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
