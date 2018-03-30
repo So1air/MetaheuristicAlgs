@@ -8,18 +8,18 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
     class Particle<T>
     {
         T _currPosition;
-        double _valueFitness; 
+        double _valueFitness;
         T _currSpeed;
-        T _personalBest;               
+        T _personalBest;
         double _fitnessBest;
-        List<Particle<T>> _neighbors;
-        Particle<T> _neighborBest;
+        List<Particle<T>> _informants = new List<Particle<T>>();
+        Particle<T> _informantBest;
 
         public T CurrPosition
         {
             get { return _currPosition; }
             set { _currPosition = value; }
-        }    
+        }
 
         public double ValueFitness
         {
@@ -32,41 +32,83 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             get { return _currSpeed; }
             set { _currSpeed = value; }
         }
-        
+
         public T PersonalBest
         {
             get { return _personalBest; }
             set { _personalBest = value; }
-        }        
+        }
 
         public Particle<T> this[int index]
         {
-            get { return _neighbors[index]; }
+            get { return _informants[index]; }
+            //set
+            //{
+            //    if ((value != this) && (!_informants.Contains(value)))
+            //        _informants[index] = value;
+            //}
+        }
+
+        public int CountInformants
+        {
+            get { return _informants.Count; }
+        }
+
+        public Particle<T> InformantBest
+        {
+            get { return _informantBest; }
             set
             {
-                if ((value != this) && (!_neighbors.Contains(value)))
-                    _neighbors[index] = value;
+                //исправление соответсвующее книге
+                if (/*(value == this) ||*/ _informants.Contains(value))
+                    _informantBest = value;
             }
-        }        
+        }
 
-        internal Particle<T> NeighborBest
-        {
-            get { return _neighborBest; }
-            set 
-            {
-                if (_neighbors.Contains(value))
-                    _neighborBest = value; 
-            }
-        }                
-        
         public double FitnessBest
         {
             get { return _fitnessBest; }
-            set { _fitnessBest = value; }
+            set
+            {
+                /*if (_fitnessBest < value)
+                {
+                    ChangePersonalBest(this);*/
+                _fitnessBest = value;
+                /*}*/
+            }
         }
 
-        public Particle(T position)
+        public void DeleteInformants()
         {
+            _informants.Clear();
+            //потрібно скинути всі посилання на методи у події
+            //ChangePersonalBest.
         }
+
+        public bool AddInformant(Particle<T> newInformant)
+        {
+            if ((newInformant != null) && (!_informants.Contains(newInformant)))
+            {
+                _informants.Add(newInformant);
+                /**/
+                /*newInformant.ChangePersonalBest += NewBestInformant;*/
+                return true;
+            }
+            else
+                return false;
+        }
+
+        //було б гарним рішенням, але виникають дві проблеми:
+        //   1) частинка не знає кращий напрямок пошуку(можна якось костильно розв'язати);
+        //   2) використання оновленої інформації на поточній ітерації схожа з методом Зейделя(проконсультуватись, можливо так теж підійде). 
+        /*
+        public event Action<Particle<T>> ChangePersonalBest;
+
+        private void NewBestInformant(Particle<T> sender)
+        {
+            if (sender._fitnessBest > this._informantBest._fitnessBest)
+                this.InformantBest = sender;         
+        }
+        */
     }
 }

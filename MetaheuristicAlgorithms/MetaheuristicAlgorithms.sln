@@ -6,7 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleSwarmOptimization",
 		{43D57191-E37A-4C9D-9A14-9A13E87DA73E} = {43D57191-E37A-4C9D-9A14-9A13E87DA73E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector", "D:\УЧЁБА\ДНУ ФПМ\ПМ-14-1 4 курс\VII семестр\(е)Методи оптимізації та дослідження операцій\Labs\Methods_of_optimization\Vector\Vector.csproj", "{43D57191-E37A-4C9D-9A14-9A13E87DA73E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector", "..\Methods_of_optimization\Vector\Vector.csproj", "{43D57191-E37A-4C9D-9A14-9A13E87DA73E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DealWithContinuousFunctionWF", "DealWithContinuousFunctionWF\DealWithContinuousFunctionWF.csproj", "{C2955B09-171C-4495-8614-7015CB2FBDC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncGenerators", "FuncGenerators\FuncGenerators.csproj", "{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +26,14 @@ Global
 		{43D57191-E37A-4C9D-9A14-9A13E87DA73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43D57191-E37A-4C9D-9A14-9A13E87DA73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43D57191-E37A-4C9D-9A14-9A13E87DA73E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2955B09-171C-4495-8614-7015CB2FBDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2955B09-171C-4495-8614-7015CB2FBDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2955B09-171C-4495-8614-7015CB2FBDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2955B09-171C-4495-8614-7015CB2FBDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
