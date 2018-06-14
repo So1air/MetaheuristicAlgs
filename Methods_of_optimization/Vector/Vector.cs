@@ -89,6 +89,12 @@ namespace MultiDimensionalOptimization
 
         public static bool operator ==(Vector left_v, Vector right_v)
         {
+            if (object.ReferenceEquals(left_v, null))
+                return object.ReferenceEquals(right_v, null);
+
+            if (object.ReferenceEquals(right_v, null))
+                return false;
+
             if (object.ReferenceEquals(left_v, right_v))
                 return true;                
             else

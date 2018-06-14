@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Metaheuristics
 {
-    interface IArea<T>
+    public interface IArea<T>
     {
         bool IsContains(T element);
         T Projection(T element);

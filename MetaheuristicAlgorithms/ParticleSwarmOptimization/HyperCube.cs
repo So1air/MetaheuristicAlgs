@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Metaheuristics
 {
-    class HyperCube : IArea<Vector>
+    public class HyperCube : IArea<Vector>
     {        
         public Vector LeastVertex { private set; get; }
         double _side;

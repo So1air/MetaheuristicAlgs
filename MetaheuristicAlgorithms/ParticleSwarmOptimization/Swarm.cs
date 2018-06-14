@@ -8,23 +8,23 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
     /// <summary>
     /// Класс, пов'язаний з алгоритмом оптимізації методом рою частинок 
     /// </summary>
-    /// <typeparam name="T">тип елементів простору, у якому вирішується оптимізаційна задача та від яких залежить цільова функція</typeparam>
-    class Swarm<T>
+    /// <typeparam name="TPos">тип елементів простору, у якому вирішується оптимізаційна задача та від яких залежить цільова функція</typeparam>
+    public class Swarm<TPos, TSpeed>
     {
         //идея о вложенном классе
 
-        //class Particle<T>
+        //class Particle<TPos, TSpeed>
         //{
-        //    Swarm<T> mySwarm; //наличие доп. ссылки в качестве поля -- однозначный "-", но достаточно ли плох, чтобы перекрыть "++"
-        //    T _currPosition;
+        //    Swarm<TPos, TSpeed> mySwarm; //наличие доп. ссылки в качестве поля -- однозначный "-", но достаточно ли плох, чтобы перекрыть "++"
+        //    TPos _currPosition;
         //    double _valueFitness;
-        //    T _currSpeed;
-        //    T _personalBest;
+        //    TSpeed _currSpeed;
+        //    TPos _personalBest;
         //    double _fitnessBest;
-        //    List<Particle<T>> _informants = new List<Particle<T>>();
-        //    Particle<T> _informantBest;
+        //    List<Particle<TPos, TSpeed>> _informants = new List<Particle<TPos, TSpeed>>();
+        //    Particle<TPos, TSpeed> _informantBest;
 
-        //    public T CurrPosition
+        //    public TPos CurrPosition
         //    {
         //        get { return _currPosition; }
         //        set { 
@@ -39,19 +39,19 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         //        set { _valueFitness = value; }
         //    }
 
-        //    public T CurrSpeed
+        //    public TSpeed CurrSpeed
         //    {
         //        get { return _currSpeed; }
         //        set { _currSpeed = value; }
         //    }
 
-        //    public T PersonalBest
+        //    public TPos PersonalBest
         //    {
         //        get { return _personalBest; }
         //        set { _personalBest = value; }
         //    }
 
-        //    public Particle<T> this[int index]
+        //    public Particle<TPos, TSpeed> this[int index]
         //    {
         //        get { return _informants[index]; }
         //        //set
@@ -66,7 +66,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         //        get { return _informants.Count; }
         //    }
 
-        //    public Particle<T> InformantBest
+        //    public Particle<TPos, TSpeed> InformantBest
         //    {
         //        get { return _informantBest; }
         //        set
@@ -96,7 +96,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         //        //ChangePersonalBest.
         //    }
 
-        //    public bool AddInformant(Particle<T> newInformant)
+        //    public bool AddInformant(Particle<TPos, TSpeed> newInformant)
         //    {
         //        if ((newInformant != null) && (!_informants.Contains(newInformant)))
         //        {
@@ -113,9 +113,9 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         //    //   1) частинка не знає кращий напрямок пошуку(можна якось костильно розв'язати);
         //    //   2) використання оновленої інформації на поточній ітерації схожа з методом Зейделя(проконсультуватись, можливо так теж підійде). 
         //    /*
-        //    public event Action<Particle<T>> ChangePersonalBest;
+        //    public event Action<Particle<TPos, TSpeed>> ChangePersonalBest;
 
-        //    private void NewBestInformant(Particle<T> sender)
+        //    private void NewBestInformant(Particle<TPos, TSpeed> sender)
         //    {
         //        if (sender._fitnessBest > this._informantBest._fitnessBest)
         //            this.InformantBest = sender;         
@@ -124,12 +124,12 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         //}
 
         public const ushort MinSizePopulation = 2;
-        
-        List<Particle<T>> _population;
-        T _bestPosition;
+
+        List<Particle<TPos, TSpeed>> _population;
+        TPos _bestPosition;
         double _bestFit;
-        IArea<T> _areal;
-        Func<T, double> _fitness;
+        IArea<TPos> _areal;
+        Func<TPos, double> _fitness;        
         byte _minCountInformants;        
         byte _maxCountInformants;        
         
@@ -138,7 +138,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// </summary>
         /// <param name="indexParticle">індекс частинки у рої</param>
         /// <returns>посилання на частинку</returns>
-        public Particle<T> this[int indexParticle]
+        public Particle<TPos, TSpeed> this[int indexParticle]
         {
             get { return _population[indexParticle]; }
         }
@@ -160,7 +160,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// <summary>
         /// Повертає дані про позицію, у якій було досягнуте найкраще значення фітнес-функції
         /// </summary>
-        public T BestPosition { get { return _bestPosition; } }
+        public TPos BestPosition { get { return _bestPosition; } }
 
         /// <summary>
         /// Повертає найкраще досягнуте якоюсь частинкою рою значення фітнес-функції
@@ -171,6 +171,22 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// Повертає кількість частинок у рої
         /// </summary>
         public int Size { get { return _population.Count; } }
+
+        /// <summary>
+        /// Просторові обмеження оптимізаційної задачі
+        /// </summary>
+        public IArea<TPos> Areal
+        {
+            get { return _areal; }            
+        }
+
+        /// <summary>
+        /// Цільова функція задачі
+        /// </summary>
+        public Func<TPos, double> FitnessFunc
+        {
+            get { return _fitness; }            
+        }
 
         /// <summary>
         /// Повертає та задає параметр, що регулює мінімальну кількість інформаторів, яка може бути у частинки
@@ -204,7 +220,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         public bool UpdateBest()
         {
             double prevFitBest = _bestFit;
-            foreach (Particle<T> ind in _population)
+            foreach (Particle<TPos, TSpeed> ind in _population)
                 if (SearchDirection ? ind.FitnessBest > _bestFit : ind.FitnessBest < _bestFit)
                 {
                     _bestPosition = ind.PersonalBest;
@@ -216,15 +232,15 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// <summary>
         /// Метод оновлення стану рою при переході на наступну ітерацію
         /// </summary>
-        /// <param name="tweak">спосіб модифікації позиції та швидкості частки згідно з обмеженнями</param>
+        /// <param name="modifyMethod">спосіб модифікації позиції та швидкості частки згідно з обмеженнями</param>
         /// <returns>повертає true, якщо було поліпшення глобальної кращої позиції пошуку оптимального рішення, або false в інакшому випадку</returns>
-        public bool Move(Action<Particle<T>, IArea<T>> tweak)
+        public bool Move(Action<Particle<TPos, TSpeed>, IArea<TPos>> modifyMethod)
         {            
             bool improveIndicator = false;
-            //T newPosition;
-            foreach (Particle<T> individ in _population)
+            //TPos newPosition;
+            foreach (Particle<TPos, TSpeed> individ in _population)
             {
-                tweak(individ, _areal);
+                modifyMethod(individ, _areal);
                 /*???*/
                 //newPosition = _areal.Projection(individ.CurrPosition);
 
@@ -255,9 +271,8 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         {
             foreach (var ind in _population)
             {
-                //исправление соответствующее книге
-                //ind.InformantBest = ind;
-                for (int i = 0; i < ind.CountInformants; i++)
+                ind.InformantBest = ind[0];
+                for (int i = 1; i < ind.CountInformants; i++)
                     if (SearchDirection ? ind[i].FitnessBest > ind.InformantBest.FitnessBest : ind[i].FitnessBest < ind.InformantBest.FitnessBest)                    
                         ind.InformantBest = ind[i];                    
             }
@@ -273,7 +288,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             int s = this.Size - 1;
             switch (Topology)
             {
-                case TopologyLinkages.RandomDraft:
+                case TopologyLinkages.RandomInformants:
                     if (accidentFactor == null)
                         throw new ArgumentNullException("accidentFactor");
 
@@ -295,7 +310,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             }
         }
 
-        public Swarm(Func<T, double> fitnessFunction, IArea<T> areal, Random accidentFactor, ushort sizePopulation, bool max, TopologyLinkages topology, params object[] topologyOptions) //
+        public Swarm(Func<TPos, double> fitnessFunction, IArea<TPos> areal, Random accidentFactor, ushort sizePopulation, bool max_or_, TopologyLinkages topology, params object[] topologyOptions) //
         {
             if (fitnessFunction == null)
                 throw new ArgumentNullException("fitnessFunction");
@@ -303,24 +318,24 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             if (areal == null)
                 throw new ArgumentNullException("areal");
 
-            if (sizePopulation < Swarm<T>.MinSizePopulation)
+            if (sizePopulation < Swarm<TPos, TSpeed>.MinSizePopulation)
                 throw new ArgumentOutOfRangeException("sizePopulation");
 
             _fitness = fitnessFunction;
             _areal = areal;
-            _population = new List<Particle<T>>();
+            _population = new List<Particle<TPos, TSpeed>>();
             for (int i = 0; i < sizePopulation; i++)
             {
-                _population.Add(new Particle<T>() 
+                _population.Add(new Particle<TPos, TSpeed>() 
                                 {                                     
                                     CurrPosition = _areal.GetRandomElement(accidentFactor)                                    
                                 });
                 _population[i].PersonalBest = _population[i].CurrPosition;
                 _population[i].FitnessBest = _population[i].ValueFitness = _fitness(_population[i].CurrPosition);
             }
-            SearchDirection = max;
+            SearchDirection = max_or_;
             int n = _population.Count - 1;
-            switch (Topology)
+            switch (Topology = topology)
             {
                 case TopologyLinkages.Circle:
                     
@@ -343,7 +358,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
                     break;
                 
                 default:
-                    if (Topology == TopologyLinkages.RandomDraft)
+                    if (Topology == TopologyLinkages.RandomInformants)
                     {
                         if ((! byte.TryParse(topologyOptions[0].ToString(), out _minCountInformants)) || (_minCountInformants > _population.Count))
                             _minCountInformants = (byte)((_population.Count < 256 ? _population.Count : 255) * 0.3 + 0.5);

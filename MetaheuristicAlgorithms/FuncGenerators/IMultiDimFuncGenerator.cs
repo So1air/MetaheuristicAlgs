@@ -5,8 +5,8 @@ using System.Text;
 
 namespace MultiDimensionalOptimization
 {
-    interface IMultiDimFuncGenerator
+    public interface IMultiDimFuncGenerator
     {
-        public Func<Vector, double> GetFunc(ushort d = 2);
+        Func<Vector, double> GetFunc(ushort d = 2);
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MultiDimensionalOptimization
 {
-    class SphericalFuncGenerator : IMultiDimFuncGenerator
+    public class SphericalFuncGenerator : IMultiDimFuncGenerator
     {
         public Func<Vector, double> GetFunc(ushort d = 2)
         {

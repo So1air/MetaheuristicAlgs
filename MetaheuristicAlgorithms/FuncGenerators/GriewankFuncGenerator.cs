@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 namespace MultiDimensionalOptimization
-{    
-    class GriewankFuncGenerator : IMultiDimFuncGenerator
+{
+    public class GriewankFuncGenerator : IMultiDimFuncGenerator
     {
         public Func<Vector, double> GetFunc(ushort d = 2)
         {

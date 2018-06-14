@@ -9,9 +9,9 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
     /// Прототип алгоритма роя частиц для случая произвольного заданного прямоугольного гиперпаралелепипеда из 
     /// многомерного непрерывного пространства действительных чисел
     /// </summary>
-    class Prototype_PSO
+    public class Prototype_PSO
     {
-        private const string[] namesOfTopologys = { "star", "random", "circle" };
+        private static string[] namesOfTopologys = { "star", "random", "circle" };
 
         #region data 
         int iteration = 0, 

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 namespace MultiDimensionalOptimization
-{    
-    class AckleyFuncGenerator : IMultiDimFuncGenerator
+{
+    public class AckleyFuncGenerator : IMultiDimFuncGenerator
     {
         private const double _20plusE = 20d + Math.E,
                              _2PI = 2d * Math.PI;

@@ -9,8 +9,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector", "..\Methods_of_optimization\Vector\Vector.csproj", "{43D57191-E37A-4C9D-9A14-9A13E87DA73E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DealWithContinuousFunctionWF", "DealWithContinuousFunctionWF\DealWithContinuousFunctionWF.csproj", "{C2955B09-171C-4495-8614-7015CB2FBDC1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43D57191-E37A-4C9D-9A14-9A13E87DA73E} = {43D57191-E37A-4C9D-9A14-9A13E87DA73E}
+		{24612BFC-2DD0-4107-8ADB-1988E07278AD} = {24612BFC-2DD0-4107-8ADB-1988E07278AD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncGenerators", "FuncGenerators\FuncGenerators.csproj", "{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DealWithTSPFunctionWF", "DealWithTSPFunctionWF\DealWithTSPFunctionWF.csproj", "{E15B5CFB-E713-4E89-8714-EA7F782940B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +40,10 @@ Global
 		{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB3DCC5A-52CE-4C7D-88FF-C3338BBA5F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E15B5CFB-E713-4E89-8714-EA7F782940B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E15B5CFB-E713-4E89-8714-EA7F782940B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E15B5CFB-E713-4E89-8714-EA7F782940B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E15B5CFB-E713-4E89-8714-EA7F782940B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

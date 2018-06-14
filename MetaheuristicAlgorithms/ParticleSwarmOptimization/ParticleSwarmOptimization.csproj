@@ -33,10 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CyclicPermutation.cs" />
+    <Compile Include="Permutation.cs" />
+    <Compile Include="PermutationArea.cs" />
+    <Compile Include="PermutationPSO.cs" />
     <Compile Include="Prototype-PSO.cs" />
     <Compile Include="HyperCube.cs" />
-    <Compile Include="HyperRectangle.cs" />
+    <Compile Include="RectangularHyperParallelogram.cs" />
     <Compile Include="IArea.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

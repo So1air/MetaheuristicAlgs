@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MultiDimensionalOptimization
 {    
-    class RosenbrockFuncGenerator : IMultiDimFuncGenerator
+    public class RosenbrockFuncGenerator : IMultiDimFuncGenerator
     {
         public Func<Vector, double> GetFunc(ushort d = 2)
         {

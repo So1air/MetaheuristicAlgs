@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 
 namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
-{
+{ 
+    public enum StepModification
+    {
+        NoModifications,
+        FixedSplitStep,
+        RandomSplitStep,
+        LocalSearch
+    }
+
     /// <summary>
     /// Набір доступних топологій зв'язків між частками у рої
     /// </summary>
-    enum TopologyLinkages
+    public enum TopologyLinkages
     {
         /// <summary>
         /// "Зірка" - кожна частка інформується всіма іншими частками
@@ -19,42 +27,61 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// </summary>
         Circle,
         /// <summary>
-        /// "Випадкова" - кожна частка може мати відмінну від інших часток та змінну впродовж роботи алгоритму кількість інформаторів серед часток 
+        /// "Випадкові інформатори" - кожна частка може мати відмінну від інших часток та змінну впродовж роботи алгоритму кількість інформаторів серед часток 
         /// рою, але межі зміни кількості регулюються користувачем    
         /// </summary>
-        RandomDraft
+        RandomInformants
     }   
 
     /// <summary>
-    /// Класс, що представляє реалізацію загальної схеми алгоритму оптимізації методом рою часток
+    /// Класс, що являє собою реалізацію загальної схеми алгоритму оптимізації методом рою часток
     /// </summary>
-    /// <typeparam name="T">тип елементів простору, у якому вирішується оптимізаційна задача та від яких залежить цільова функція</typeparam>
-    abstract class PSO<T>
+    /// <typeparam name="TPos">тип елементів простору, у якому вирішується оптимізаційна задача та від яких залежить цільова функція</typeparam>
+    public abstract class PSO<TPos, TSpeed>
     {
         protected Random _accidentFactor = new Random();
-        protected Swarm<T> _currSwarm;
-        float _cInertiа = (float)(1d / (2 * Math.Log(2))); //~0.72f;
-        float _cСognitive = (float)(0.5 + Math.Log(2));//~1.19f;
-        float _cSocial = (float)(0.5 + Math.Log(2));
+        protected Swarm<TPos, TSpeed> _currSwarm;
+        double _cInertiа = 1d / (2 * Math.Log(2)); //~0.72;
+        double _cСognitive = 0.5 + Math.Log(2);//~1.19;
+        double _cSocial = 0.5 + Math.Log(2);
 
         //???????
-        float _cGlobal = (float)(0.5 + Math.Log(2));
+        double _cGlobal = 0.5 + Math.Log(2);
 
-        public float CGlobal
+        public double CGlobal
         {
             get { return _cGlobal; }
             set { _cGlobal = value; }
         }
 
-        float _sizeStep = 1f;
+        double _sizeStep = 1.0;
 
-        public float SizeStep
+        public double SizeStep
         {
             get { return _sizeStep; }
-            set 
-            { 
-                if (-0.5 < value && value <= 1)
-                    _sizeStep = value; 
+            set
+            {
+                if (0 < value && value <= 1)
+                    _sizeStep = value;
+            }
+        }
+
+        StepModification _stMod = StepModification.NoModifications;
+
+        public StepModification StepModification
+        {
+            get { return _stMod; }
+            set { _stMod = value; }
+        }
+
+        byte _countStepLocalSearch = 5;
+
+        public byte CountStepLocalSearch
+        {
+            get { return _countStepLocalSearch; }
+            set { 
+                if (value > 1)
+                    _countStepLocalSearch = value; 
             }
         }
         //?
@@ -71,7 +98,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// <summary>
         /// Коефіцієнт інерції, що регулює вплив поточної швидкості частки на обчислення нової швидкості
         /// </summary>
-        public float CInertiа
+        public double CInertiа
         {
             get { return _cInertiа; }
             set 
@@ -85,7 +112,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// Коефіцієнт власного досвіду, що регулює вплив найкращої знайденої часткою позиції впродовж її 
         /// "руху" на формування її нової швидкості
         /// </summary>
-        public float CСognitive
+        public double CСognitive
         {
             get { return _cСognitive; }
             set 
@@ -99,7 +126,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// Коефіцієнт досвіду інформаторів, що регулює вплив найкращої знайденої інформаторами позиції 
         /// впродовж їх "руху" на формування нової швидкості частки
         /// </summary>
-        public float CSocial
+        public double CSocial
         {
             get { return _cSocial; }
             set
@@ -112,7 +139,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// <summary>
         /// Номер поточної ітерації
         /// </summary>
-        public int Iteration { protected set; public get; }
+        public int Iteration { protected set; get; }
 
         /// <summary>
         /// Кількість часток у рої
@@ -130,12 +157,12 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         {
             for (int i = 0; i < count; i++)
             {
-                if (_currSwarm.Move(Tweak))
+                if (_currSwarm.Move(ModifyMethod))
                     _improvement++;
                 else
                     switch (_currSwarm.Topology)
                     {
-                        case TopologyLinkages.RandomDraft:
+                        case TopologyLinkages.RandomInformants:
                             _currSwarm.ResetInformants(this._accidentFactor);
                             _improvement = 0;
                             break;
@@ -147,8 +174,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
                 {
                     switch (_currSwarm.Topology)
                     {
-                        case TopologyLinkages.RandomDraft:
-
+                        case TopologyLinkages.RandomInformants:
                             _currSwarm.ResetInformants(this._accidentFactor);
                             _improvement = 0;
                             break;
@@ -160,7 +186,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             }
         }
 
-        public T CurrentSolution
+        public TPos CurrentSolution
         {
             get { return _currSwarm.BestPosition; }
         }
@@ -175,24 +201,18 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// </summary>
         /// <param name="particleForModify">частка, яку треба змінити</param>
         /// <param name="ranges">допустима область, в межах якої мають выдбуватися зміни</param>
-        public abstract void Tweak(Particle<T> particleForModify, IArea<T> ranges);      
+        public abstract void ModifyMethod(Particle<TPos, TSpeed> particleForModify, IArea<TPos> ranges);      
 
         /// <summary>
-        /// Конструктор, що конфігурує метод існуючим роєм та задає інерційний, когнітивний і соціальний коефіцієнти  
+        /// Конструктор, що конфігурує метод існуючим роєм  
         /// </summary>
         /// <param name="swarm">існуючий рій</param>
-        /// <param name="cInertia">значення коефіцієнта інерції</param>
-        /// <param name="cCognitive">значення когнітивного коефіцієнта</param>
-        /// <param name="cSocial">значення соціального коефіцієнта</param>
-        public PSO(Swarm<T> swarm, float cInertia, float cCognitive, float cSocial)
+        public PSO(Swarm<TPos, TSpeed> swarm)
         {
             if (swarm == null)
                 throw new ArgumentNullException("swarm");
 
             _currSwarm = swarm;
-            CInertiа = cInertia;
-            CСognitive = cCognitive;
-            CSocial = cSocial;
             Iteration = 0;
         }
     }

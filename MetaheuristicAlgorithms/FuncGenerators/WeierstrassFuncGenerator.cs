@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 namespace MultiDimensionalOptimization
-{    
-    class WeierstrassFuncGenerator : IMultiDimFuncGenerator
+{
+    public class WeierstrassFuncGenerator : IMultiDimFuncGenerator
     {
         private readonly static double[] PI_3_k, powers_half;
         private static double spec_summ;

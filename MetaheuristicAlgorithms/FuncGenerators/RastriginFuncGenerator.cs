@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 namespace MultiDimensionalOptimization
-{    
-    class RastriginFuncGenerator : IMultiDimFuncGenerator
+{
+    public class RastriginFuncGenerator : IMultiDimFuncGenerator
     {
         public Func<Vector, double> GetFunc(ushort d = 2)
         {

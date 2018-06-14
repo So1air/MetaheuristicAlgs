@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Metaheuristics
 {
-    class HyperRectangle : IArea<Vector>
+    public class RectangularHyperParallelogram : IArea<Vector>
     {
         public Vector LeastVertex { private set; get; }
         double[] _sides;
@@ -94,7 +94,7 @@ namespace Metaheuristics
 
         }
 
-        public HyperRectangle(Vector leastVertex, double[] sides)
+        public RectangularHyperParallelogram(Vector leastVertex, double[] sides)
         {
             if (leastVertex == null)
                 throw new ArgumentNullException("leastPoint");

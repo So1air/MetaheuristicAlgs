@@ -5,17 +5,17 @@ using System.Text;
 
 namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
 {
-    class Particle<T>
+    public class Particle<TPos, TSpeed>
     {
-        T _currPosition;
+        TPos _currPosition;
         double _valueFitness;
-        T _currSpeed;
-        T _personalBest;
+        TSpeed _currSpeed;
+        TPos _personalBest;
         double _fitnessBest;
-        List<Particle<T>> _informants = new List<Particle<T>>();
-        Particle<T> _informantBest;
+        List<Particle<TPos, TSpeed>> _informants = new List<Particle<TPos, TSpeed>>();
+        Particle<TPos, TSpeed> _informantBest;
 
-        public T CurrPosition
+        public TPos CurrPosition
         {
             get { return _currPosition; }
             set { _currPosition = value; }
@@ -27,19 +27,19 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             set { _valueFitness = value; }
         }
 
-        public T CurrSpeed
+        public TSpeed CurrSpeed
         {
             get { return _currSpeed; }
             set { _currSpeed = value; }
         }
 
-        public T PersonalBest
+        public TPos PersonalBest
         {
             get { return _personalBest; }
             set { _personalBest = value; }
         }
 
-        public Particle<T> this[int index]
+        public Particle<TPos, TSpeed> this[int index]
         {
             get { return _informants[index]; }
             //set
@@ -54,7 +54,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             get { return _informants.Count; }
         }
 
-        public Particle<T> InformantBest
+        public Particle<TPos, TSpeed> InformantBest
         {
             get { return _informantBest; }
             set
@@ -85,7 +85,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             //ChangePersonalBest.
         }
 
-        public bool AddInformant(Particle<T> newInformant)
+        public bool AddInformant(Particle<TPos, TSpeed> newInformant)
         {
             if ((newInformant != null) && (!_informants.Contains(newInformant)))
             {
@@ -102,9 +102,9 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         //   1) частинка не знає кращий напрямок пошуку(можна якось костильно розв'язати);
         //   2) використання оновленої інформації на поточній ітерації схожа з методом Зейделя(проконсультуватись, можливо так теж підійде). 
         /*
-        public event Action<Particle<T>> ChangePersonalBest;
+        public event Action<Particle<TPos, TSpeed>> ChangePersonalBest;
 
-        private void NewBestInformant(Particle<T> sender)
+        private void NewBestInformant(Particle<TPos, TSpeed> sender)
         {
             if (sender._fitnessBest > this._informantBest._fitnessBest)
                 this.InformantBest = sender;         

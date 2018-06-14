@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MultiDimensionalOptimization
 {
-    class Schwefel1_2FuncGenerator : IMultiDimFuncGenerator
+    public class Schwefel1_2FuncGenerator : IMultiDimFuncGenerator
     {
         public Func<Vector, double> GetFunc(ushort d = 2)
         {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 namespace MultiDimensionalOptimization
-{    
-    class AlpineFuncGenerator : IMultiDimFuncGenerator
+{
+    public class AlpineFuncGenerator : IMultiDimFuncGenerator
     {
         public Func<Vector, double> GetFunc(ushort d = 2)
         {

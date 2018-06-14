@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MultiDimensionalOptimization
 {
-    class EllipticalFuncGenerator : IMultiDimFuncGenerator
+    public class EllipticalFuncGenerator : IMultiDimFuncGenerator
     {
         public Func<Vector, double> GetFunc(ushort d = 2)
         {
