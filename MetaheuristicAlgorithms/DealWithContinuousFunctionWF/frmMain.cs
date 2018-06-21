@@ -24,7 +24,8 @@ namespace DealWithContinuousFunctionWF
                       _stepSize = 0.5;
         private bool _min_or__ = true;
         private StepModification _stMod;
-        private VectorPSO _currSolving;        
+        private VectorPSO _currSolving;
+        private Swarm<Vector, Vector> _currSw;
 
         public frmMain()
         {
@@ -44,11 +45,12 @@ namespace DealWithContinuousFunctionWF
             cmB_TypeTopology.SelectedIndex = 0;
             txB_StepSize.Text = _stepSize.ToString();
             cmB_StepModification.SelectedIndex = 0;
+            btnRun_Click(null, null);
         }
 
         private void btnAddNewFitFunc_Click(object sender, EventArgs e)
         {
-            //futureeeeeeeeeeeeeeeeeeeeeeeeeeeee
+            //futureeeeeeeeeeeeeeeeeeeeeeeeeeeee<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         }
 
         private void txB_Inertia_Validated(object sender, EventArgs e)
@@ -284,6 +286,8 @@ namespace DealWithContinuousFunctionWF
                     ff = ((FitnessFunc<Vector>)cmB_FitnessFunc.SelectedItem).F;
                     break;
             }
+
+            lblCurrFitFunc.Text =  "f = " + cmB_FitnessFunc.SelectedItem + " -> " + ((_min_or__) ? "min" : "max") + ", d = " + dimensionality;
             Vector leftBottomPoint = Vector.CreateVector(dimensionality);
             double[] sides = new double[dimensionality];
             for (int i = 0; i < dimensionality; i++)
@@ -306,14 +310,14 @@ namespace DealWithContinuousFunctionWF
                 default:
                     throw new NotImplementedException();
             }
-            Swarm<Vector, Vector> sw = new Swarm<Vector, Vector>(ff,
+            _currSw = new Swarm<Vector, Vector>(ff,
                                                                 new RectangularHyperParallelogram(leftBottomPoint, sides),
                                                                 _accidentFactor,
                                                                 (ushort)nUD_SizeSwarm.Value,
                                                                 !_min_or__,
                                                                 (TopologyLinkages)cmB_TypeTopology.SelectedItem,
                                                                 paramsTopology);
-            _currSolving = new VectorPSO(sw) 
+            _currSolving = new VectorPSO(_currSw) 
                            { 
                                CInertiа = _cInertia,
                                CСognitive = _cСognitive,
@@ -325,30 +329,61 @@ namespace DealWithContinuousFunctionWF
                                Threshold = (byte)nUD_Threshold.Value
                            };
 
+            lblCurrSettingsAlgorithm.Text = "s = " + _currSw.Size + ";" + Environment.NewLine
+                                          + "Topology: " + _currSw.Topology + "," + Environment.NewLine
+                                          + ((_currSw.Topology == TopologyLinkages.RandomInformants) ? "Nmin = " + _currSw.MinCountInformants + ", Nmax = " + _currSw.MaxCountInformants + ", threshold = " + _currSolving.Threshold + ";" + Environment.NewLine : "")
+                                          + "cIner = " + _currSolving.CInertiа + ", cPers = " + _currSolving.CСognitive + ", cSoc = " + _currSolving.CGlobal + ", cGlob = " + _currSolving.CGlobal + ";" + Environment.NewLine
+                                          + "StepMod: " + cmB_StepModification.Text; 
+            
+
             if (dimensionality == 2)
             {
-                chtDemoState.Series["srsParticles"].Points.Clear();
-                chtDemoState.Series["srsDirections"].Points.Clear();
-                DataPoint d1, d2;
-                Series srs;
-                for (int i = 0; i < sw.Size; i++)
-			    {
-
-			        chtDemoState.Series["srsParticles"].Points.Add(d1 = new DataPoint(sw[i].CurrPosition[0], sw[i].CurrPosition[1]) 
-                                                                   { 
-                                                                        Label = Math.Round(sw[i].ValueFitness, 3).ToString() 
-                                                                   });
-                    chtDemoState.Series["srsDirections"].Points.Add(d2 = new DataPoint(sw[i].CurrPosition[0] + sw[i].CurrSpeed[0], sw[i].CurrPosition[1] + sw[i].CurrSpeed[1]));
-                    srs = new Series() { Color = Color.Blue, ChartType = SeriesChartType.Line };
-                    srs.Points.AddXY(d1.XValue, d1.YValues[0]);
-                    srs.Points.AddXY(d2.XValue, d2.YValues[0]);
-                    chtDemoState.Series.Add(srs); 
-                }
-                chtDemoState.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(dGV_Restrictions["clnMinX", 0].Value);
-                chtDemoState.ChartAreas[0].AxisX.Maximum = Convert.ToDouble(dGV_Restrictions["clnMaxX", 0].Value);
-                chtDemoState.ChartAreas[0].AxisY.Minimum = Convert.ToDouble(dGV_Restrictions["clnMinX", 1].Value);
-                chtDemoState.ChartAreas[0].AxisY.Maximum = Convert.ToDouble(dGV_Restrictions["clnMaxX", 1].Value); 
+                Draw2D();
             }
+
+            lblValueCurrSolution.Text = "f* = " + Math.Round(_currSolving.ValueFitnessCurrentSolution, 6) + Environment.NewLine
+                       + "X* = (" + _currSolving.CurrentSolution + ")";
+            btnNextIteration.Text = "Наступна ітерація(1)";
+        }
+
+        private void Draw2D(int coord1 = 0, int coord2 = 1)
+        {
+            chtDemoState.Series["srsParticles"].Points.Clear();
+            chtDemoState.Series["srsDirections"].Points.Clear();
+            for (int i = chtDemoState.Series.Count - 1; chtDemoState.Series.Count > 2; i--)
+                chtDemoState.Series.RemoveAt(i);
+            DataPoint d1, d2;
+            Series srs;
+
+
+            for (int i = 0; i < _currSw.Size; i++)
+            {
+                
+                chtDemoState.Series["srsParticles"].Points.Add(d1 = new DataPoint(_currSw[i].CurrPosition[coord1], _currSw[i].CurrPosition[coord2])
+                {
+                    Label = Math.Round(_currSw[i].ValueFitness, 3).ToString()
+                });
+                chtDemoState.Series["srsDirections"].Points.Add(d2 = new DataPoint(_currSw[i].CurrPosition[coord1] - _currSw[i].CurrSpeed[coord1], _currSw[i].CurrPosition[coord2] - _currSw[i].CurrSpeed[coord2]));
+                srs = new Series() { Color = Color.Blue, ChartType = SeriesChartType.Line };
+                srs.Points.AddXY(d1.XValue, d1.YValues[0]);
+                srs.Points.AddXY(d2.XValue, d2.YValues[0]);
+                chtDemoState.Series.Add(srs);
+            }
+            chtDemoState.ChartAreas[0].AxisX.Maximum = 
+                (chtDemoState.ChartAreas[0].AxisX.Minimum = Convert.ToDouble(((RectangularHyperParallelogram)_currSw.Areal).LeastVertex[coord1]))
+                + ((RectangularHyperParallelogram)_currSw.Areal).GetSide(coord1);
+            chtDemoState.ChartAreas[0].AxisY.Maximum = 
+                (chtDemoState.ChartAreas[0].AxisY.Minimum = Convert.ToDouble(((RectangularHyperParallelogram)_currSw.Areal).LeastVertex[coord2]))
+                 + ((RectangularHyperParallelogram)_currSw.Areal).GetSide(coord2);
+        }
+
+        private void btnNextIteration_Click(object sender, EventArgs e)
+        {
+            _currSolving.NextIteration();
+            Draw2D(/*взять параметры с компонентов интерфейса*/);
+            lblValueCurrSolution.Text = "f* = " + Math.Round(_currSolving.ValueFitnessCurrentSolution, 6) + Environment.NewLine 
+                                   + "X* = (" + _currSolving.CurrentSolution + ")";
+            btnNextIteration.Text = "Наступна ітерація(" + (_currSolving.Iteration + 1) + ")";
         }           
     }
 }

@@ -48,7 +48,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         /// Конструктор, що на основі формули створює делегат типу Func
         /// </summary>
         /// <param name="text">коректний текст формули</param>
-        public FitnessFunc(string text)
+        public FitnessFunc(string text, string name = null)
         {
             throw new NotImplementedException();
         }

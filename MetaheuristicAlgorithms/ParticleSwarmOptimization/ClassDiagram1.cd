@@ -8,15 +8,15 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Metaheuristics.HyperRectangle" BaseTypeListCollapsed="true">
+  <Class Name="Metaheuristics.RectangularHyperParallelogram" BaseTypeListCollapsed="true">
     <Position X="7.5" Y="0.5" Width="3.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAIAAAAACAAAAIAAAAAQQAAAEACAAAAAAQAAA=</HashCode>
-      <FileName>HyperRectangle.cs</FileName>
+      <FileName>RectangularHyperParallelogram.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.Particle&lt;T&gt;">
+  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.Particle&lt;TPos, TSpeed&gt;">
     <Position X="4.5" Y="3.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AEAChAAAACAAQAAACAAAhQAAAAQAEAABhAAAAABAAgA=</HashCode>
@@ -30,25 +30,47 @@
       <FileName>Prototype-PSO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.PSO&lt;T&gt;">
+  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.PSO&lt;TPos, TSpeed&gt;">
     <Position X="4.5" Y="8.5" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>ACAAQCAgBQQgAAUAQIAAgAQAAAAAAAIAIgAgAAAAABA=</HashCode>
+      <HashCode>ACAAQCAABYQgEBUAQIAAgAQAEAAAAAIAIgAgQAAAABA=</HashCode>
       <FileName>PSO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.Swarm&lt;T&gt;">
+  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.Swarm&lt;TPos, TSpeed&gt;">
     <Position X="0.75" Y="3.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>KAAABAAggIAAggAACAAAAAAAgAAAAUAAAABQQCIAgAE=</HashCode>
+      <HashCode>KAAABAAggIAAggAACBAAAAAAgAAAAVAAAABQQCIAgAE=</HashCode>
       <FileName>Swarm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.VectorPSO">
     <Position X="0.75" Y="9.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>VectorPSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.Permutation">
+    <Position X="0.75" Y="14.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AgAIIAAAAAAAAAAACAEAAAAAAAAJQAAAAAACAgAAAAA=</HashCode>
+      <FileName>Permutation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.PermutationArea">
+    <Position X="4.5" Y="15.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAACAAAAQAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>PermutationArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.PermutationPSO">
+    <Position X="0.75" Y="11" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAABAAAAAAAAQAAAEAAQQIAAgAA=</HashCode>
+      <FileName>PermutationPSO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Metaheuristics.IArea&lt;T&gt;">
@@ -61,7 +83,7 @@
   <Enum Name="Metaheuristics.PopulationAlgs.BehavioralAlgs.TopologyLinkages">
     <Position X="0.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAgAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAgAAAAAAAABA=</HashCode>
       <FileName>PSO.cs</FileName>
     </TypeIdentifier>
   </Enum>

@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.grB_SettingsStart = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblRestrictions = new System.Windows.Forms.Label();
             this.dGV_Restrictions = new System.Windows.Forms.DataGridView();
+            this.clnMinX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnMaxX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSwitchMinMax = new System.Windows.Forms.Button();
             this.lblSwitchMinMax = new System.Windows.Forms.Label();
             this.grB_SetParamsAlg = new System.Windows.Forms.GroupBox();
+            this.lblCountStepsLocalSearch = new System.Windows.Forms.Label();
+            this.nUD_CountStepsLocalSearch = new System.Windows.Forms.NumericUpDown();
             this.lblThreshold = new System.Windows.Forms.Label();
             this.lblMaxIterations = new System.Windows.Forms.Label();
             this.nUD_Threshold = new System.Windows.Forms.NumericUpDown();
@@ -63,7 +67,7 @@
             this.txB_Inertia = new System.Windows.Forms.TextBox();
             this.txB_Personal = new System.Windows.Forms.TextBox();
             this.txB_Social = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblFitnessFunc = new System.Windows.Forms.Label();
             this.lblDimension = new System.Windows.Forms.Label();
             this.nUD_Dimensionality = new System.Windows.Forms.NumericUpDown();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -74,26 +78,20 @@
             this.lblCurrSolution = new System.Windows.Forms.Label();
             this.lblValueCurrSolution = new System.Windows.Forms.Label();
             this.btnNextIteration = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.nUD_CountStepsLocalSearch = new System.Windows.Forms.NumericUpDown();
-            this.lblCountStepsLocalSearch = new System.Windows.Forms.Label();
-            this.clnMinX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnMaxX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnToFinish = new System.Windows.Forms.Button();
+            this.tbC_Main = new System.Windows.Forms.TabControl();
+            this.tbP_SolvingOtimizationProblem = new System.Windows.Forms.TabPage();
+            this.grB_DemoSolving = new System.Windows.Forms.GroupBox();
+            this.lblCurrSettingsAlgorithm = new System.Windows.Forms.Label();
+            this.lblCurrFitFunc = new System.Windows.Forms.Label();
+            this.tbC_Visualization = new System.Windows.Forms.TabControl();
+            this.tbP_VisualizationStateSolving = new System.Windows.Forms.TabPage();
+            this.tbP_ = new System.Windows.Forms.TabPage();
+            this.tbP__ = new System.Windows.Forms.TabPage();
             this.grB_SettingsStart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Restrictions)).BeginInit();
             this.grB_SetParamsAlg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUD_CountStepsLocalSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_Threshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_MaxIterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_MinInformants)).BeginInit();
@@ -101,24 +99,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUD_SizeSwarm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_Dimensionality)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chtDemoState)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUD_CountStepsLocalSearch)).BeginInit();
+            this.tbC_Main.SuspendLayout();
+            this.tbP_SolvingOtimizationProblem.SuspendLayout();
+            this.grB_DemoSolving.SuspendLayout();
+            this.tbC_Visualization.SuspendLayout();
+            this.tbP_VisualizationStateSolving.SuspendLayout();
             this.SuspendLayout();
             // 
             // grB_SettingsStart
             // 
             this.grB_SettingsStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.grB_SettingsStart.Controls.Add(this.label5);
+            this.grB_SettingsStart.Controls.Add(this.lblRestrictions);
             this.grB_SettingsStart.Controls.Add(this.dGV_Restrictions);
             this.grB_SettingsStart.Controls.Add(this.btnSwitchMinMax);
             this.grB_SettingsStart.Controls.Add(this.lblSwitchMinMax);
             this.grB_SettingsStart.Controls.Add(this.grB_SetParamsAlg);
-            this.grB_SettingsStart.Controls.Add(this.label3);
+            this.grB_SettingsStart.Controls.Add(this.lblFitnessFunc);
             this.grB_SettingsStart.Controls.Add(this.lblDimension);
             this.grB_SettingsStart.Controls.Add(this.nUD_Dimensionality);
             this.grB_SettingsStart.Controls.Add(this.lblStatus);
@@ -132,14 +129,14 @@
             this.grB_SettingsStart.TabStop = false;
             this.grB_SettingsStart.Text = "Налаштування запуску";
             // 
-            // label5
+            // lblRestrictions
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 121);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 13);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Обмеження на координати:";
+            this.lblRestrictions.AutoSize = true;
+            this.lblRestrictions.Location = new System.Drawing.Point(6, 121);
+            this.lblRestrictions.Name = "lblRestrictions";
+            this.lblRestrictions.Size = new System.Drawing.Size(147, 13);
+            this.lblRestrictions.TabIndex = 28;
+            this.lblRestrictions.Text = "Обмеження на координати:";
             // 
             // dGV_Restrictions
             // 
@@ -153,18 +150,32 @@
             this.clnMaxX});
             this.dGV_Restrictions.Location = new System.Drawing.Point(6, 137);
             this.dGV_Restrictions.Name = "dGV_Restrictions";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Restrictions.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Restrictions.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGV_Restrictions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dGV_Restrictions.Size = new System.Drawing.Size(338, 100);
             this.dGV_Restrictions.TabIndex = 27;
             this.dGV_Restrictions.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Restrictions_CellValidated);
+            // 
+            // clnMinX
+            // 
+            this.clnMinX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnMinX.HeaderText = "min";
+            this.clnMinX.Name = "clnMinX";
+            this.clnMinX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clnMaxX
+            // 
+            this.clnMaxX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnMaxX.HeaderText = "max";
+            this.clnMaxX.Name = "clnMaxX";
+            this.clnMaxX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnSwitchMinMax
             // 
@@ -222,6 +233,37 @@
             this.grB_SetParamsAlg.TabStop = false;
             this.grB_SetParamsAlg.Text = "Параметри алгоритму";
             // 
+            // lblCountStepsLocalSearch
+            // 
+            this.lblCountStepsLocalSearch.AutoSize = true;
+            this.lblCountStepsLocalSearch.Location = new System.Drawing.Point(24, 120);
+            this.lblCountStepsLocalSearch.Name = "lblCountStepsLocalSearch";
+            this.lblCountStepsLocalSearch.Size = new System.Drawing.Size(45, 13);
+            this.lblCountStepsLocalSearch.TabIndex = 37;
+            this.lblCountStepsLocalSearch.Text = "nstep = ";
+            // 
+            // nUD_CountStepsLocalSearch
+            // 
+            this.nUD_CountStepsLocalSearch.Location = new System.Drawing.Point(68, 118);
+            this.nUD_CountStepsLocalSearch.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nUD_CountStepsLocalSearch.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.nUD_CountStepsLocalSearch.Name = "nUD_CountStepsLocalSearch";
+            this.nUD_CountStepsLocalSearch.Size = new System.Drawing.Size(79, 20);
+            this.nUD_CountStepsLocalSearch.TabIndex = 36;
+            this.nUD_CountStepsLocalSearch.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
             // lblThreshold
             // 
             this.lblThreshold.AutoSize = true;
@@ -239,6 +281,7 @@
             this.lblMaxIterations.Size = new System.Drawing.Size(53, 13);
             this.lblMaxIterations.TabIndex = 16;
             this.lblMaxIterations.Text = "maxIter = ";
+            this.lblMaxIterations.Visible = false;
             // 
             // nUD_Threshold
             // 
@@ -263,6 +306,7 @@
             0,
             0,
             0});
+            this.nUD_MaxIterations.Visible = false;
             // 
             // lblStepModification
             // 
@@ -487,14 +531,14 @@
             this.txB_Social.TabIndex = 8;
             this.txB_Social.Validated += new System.EventHandler(this.txB_Social_Validated);
             // 
-            // label3
+            // lblFitnessFunc
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Цільова функція:";
+            this.lblFitnessFunc.AutoSize = true;
+            this.lblFitnessFunc.Location = new System.Drawing.Point(6, 22);
+            this.lblFitnessFunc.Name = "lblFitnessFunc";
+            this.lblFitnessFunc.Size = new System.Drawing.Size(92, 13);
+            this.lblFitnessFunc.TabIndex = 23;
+            this.lblFitnessFunc.Text = "Цільова функція:";
             // 
             // lblDimension
             // 
@@ -575,57 +619,58 @@
             // 
             // chtDemoState
             // 
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisX.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.AcrossAxis;
-            chartArea2.AxisX.MinorGrid.Enabled = true;
-            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea2.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisX.MinorTickMark.Enabled = true;
-            chartArea2.AxisX.MinorTickMark.LineColor = System.Drawing.Color.LightGray;
-            chartArea2.AxisX.MinorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisX.MinorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisY.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.AcrossAxis;
-            chartArea2.AxisY.MinorGrid.Enabled = true;
-            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea2.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisY.MinorTickMark.Enabled = true;
-            chartArea2.AxisY.MinorTickMark.LineColor = System.Drawing.Color.LightGray;
-            chartArea2.AxisY.MinorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea2.AxisY.MinorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea2.CursorX.LineColor = System.Drawing.Color.MintCream;
-            chartArea2.CursorX.SelectionColor = System.Drawing.Color.Honeydew;
-            chartArea2.CursorY.LineColor = System.Drawing.Color.LightGoldenrodYellow;
-            chartArea2.CursorY.SelectionColor = System.Drawing.Color.Honeydew;
-            chartArea2.Name = "chaMain";
-            chartArea2.ShadowColor = System.Drawing.Color.Gainsboro;
-            this.chtDemoState.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.AcrossAxis;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisX.MinorTickMark.Enabled = true;
+            chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.MinorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisX.MinorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DimGray;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.MajorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.AcrossAxis;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisY.MinorTickMark.Enabled = true;
+            chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.MinorTickMark.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisY.MinorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea1.CursorX.LineColor = System.Drawing.Color.MintCream;
+            chartArea1.CursorX.SelectionColor = System.Drawing.Color.Honeydew;
+            chartArea1.CursorY.LineColor = System.Drawing.Color.LightGoldenrodYellow;
+            chartArea1.CursorY.SelectionColor = System.Drawing.Color.Honeydew;
+            chartArea1.Name = "chaMain";
+            chartArea1.ShadowColor = System.Drawing.Color.Gainsboro;
+            this.chtDemoState.ChartAreas.Add(chartArea1);
             this.chtDemoState.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chtDemoState.Location = new System.Drawing.Point(3, 3);
             this.chtDemoState.Name = "chtDemoState";
-            series3.ChartArea = "chaMain";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series3.Color = System.Drawing.Color.YellowGreen;
-            series3.Name = "srsParticles";
-            series4.ChartArea = "chaMain";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series4.Color = System.Drawing.Color.Lime;
-            series4.Name = "srsDirections";
-            this.chtDemoState.Series.Add(series3);
-            this.chtDemoState.Series.Add(series4);
-            this.chtDemoState.Size = new System.Drawing.Size(720, 277);
+            series1.ChartArea = "chaMain";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Color = System.Drawing.Color.YellowGreen;
+            series1.Name = "srsParticles";
+            series2.ChartArea = "chaMain";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.Color = System.Drawing.Color.Lime;
+            series2.Name = "srsDirections";
+            this.chtDemoState.Series.Add(series1);
+            this.chtDemoState.Series.Add(series2);
+            this.chtDemoState.Size = new System.Drawing.Size(726, 347);
             this.chtDemoState.TabIndex = 1;
             // 
             // lblCurrSolution
             // 
+            this.lblCurrSolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCurrSolution.AutoSize = true;
-            this.lblCurrSolution.Location = new System.Drawing.Point(6, 381);
+            this.lblCurrSolution.Location = new System.Drawing.Point(187, 518);
             this.lblCurrSolution.Name = "lblCurrSolution";
             this.lblCurrSolution.Size = new System.Drawing.Size(95, 13);
             this.lblCurrSolution.TabIndex = 2;
@@ -633,8 +678,9 @@
             // 
             // lblValueCurrSolution
             // 
+            this.lblValueCurrSolution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblValueCurrSolution.AutoSize = true;
-            this.lblValueCurrSolution.Location = new System.Drawing.Point(6, 394);
+            this.lblValueCurrSolution.Location = new System.Drawing.Point(299, 518);
             this.lblValueCurrSolution.Name = "lblValueCurrSolution";
             this.lblValueCurrSolution.Size = new System.Drawing.Size(9, 13);
             this.lblValueCurrSolution.TabIndex = 3;
@@ -642,199 +688,126 @@
             // 
             // btnNextIteration
             // 
-            this.btnNextIteration.Location = new System.Drawing.Point(110, 384);
+            this.btnNextIteration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNextIteration.Location = new System.Drawing.Point(6, 513);
             this.btnNextIteration.Name = "btnNextIteration";
-            this.btnNextIteration.Size = new System.Drawing.Size(75, 23);
+            this.btnNextIteration.Size = new System.Drawing.Size(75, 42);
             this.btnNextIteration.TabIndex = 4;
-            this.btnNextIteration.Text = "Наступна";
+            this.btnNextIteration.Text = "Наступна ітерація";
             this.btnNextIteration.UseVisualStyleBackColor = true;
+            this.btnNextIteration.Click += new System.EventHandler(this.btnNextIteration_Click);
             // 
-            // button3
+            // btnToFinish
             // 
-            this.button3.Location = new System.Drawing.Point(434, 384);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnToFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnToFinish.Location = new System.Drawing.Point(95, 513);
+            this.btnToFinish.Name = "btnToFinish";
+            this.btnToFinish.Size = new System.Drawing.Size(75, 42);
+            this.btnToFinish.TabIndex = 8;
+            this.btnToFinish.Text = "Завершити";
+            this.btnToFinish.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // tbC_Main
             // 
-            this.button4.Location = new System.Drawing.Point(353, 384);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.tbC_Main.Controls.Add(this.tbP_SolvingOtimizationProblem);
+            this.tbC_Main.Controls.Add(this.tbP__);
+            this.tbC_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbC_Main.Location = new System.Drawing.Point(0, 0);
+            this.tbC_Main.Name = "tbC_Main";
+            this.tbC_Main.SelectedIndex = 0;
+            this.tbC_Main.Size = new System.Drawing.Size(1124, 596);
+            this.tbC_Main.TabIndex = 9;
             // 
-            // button5
+            // tbP_SolvingOtimizationProblem
             // 
-            this.button5.Location = new System.Drawing.Point(272, 384);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.tbP_SolvingOtimizationProblem.Controls.Add(this.grB_DemoSolving);
+            this.tbP_SolvingOtimizationProblem.Controls.Add(this.grB_SettingsStart);
+            this.tbP_SolvingOtimizationProblem.Location = new System.Drawing.Point(4, 22);
+            this.tbP_SolvingOtimizationProblem.Name = "tbP_SolvingOtimizationProblem";
+            this.tbP_SolvingOtimizationProblem.Padding = new System.Windows.Forms.Padding(3);
+            this.tbP_SolvingOtimizationProblem.Size = new System.Drawing.Size(1116, 570);
+            this.tbP_SolvingOtimizationProblem.TabIndex = 0;
+            this.tbP_SolvingOtimizationProblem.Text = "Розв\'язання оптимізаційної задачі";
+            this.tbP_SolvingOtimizationProblem.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // grB_DemoSolving
             // 
-            this.button6.Location = new System.Drawing.Point(191, 384);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Завершити";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1124, 596);
-            this.tabControl1.TabIndex = 9;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.grB_SettingsStart);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1116, 570);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Розв\'язання оптимізаційної задачі";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grB_DemoSolving.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.tabControl2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.btnNextIteration);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.lblValueCurrSolution);
-            this.groupBox1.Controls.Add(this.lblCurrSolution);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Location = new System.Drawing.Point(367, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(746, 561);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Демонстрація процесу розв\'язання";
+            this.grB_DemoSolving.Controls.Add(this.lblCurrSettingsAlgorithm);
+            this.grB_DemoSolving.Controls.Add(this.lblCurrFitFunc);
+            this.grB_DemoSolving.Controls.Add(this.tbC_Visualization);
+            this.grB_DemoSolving.Controls.Add(this.btnNextIteration);
+            this.grB_DemoSolving.Controls.Add(this.btnToFinish);
+            this.grB_DemoSolving.Controls.Add(this.lblValueCurrSolution);
+            this.grB_DemoSolving.Controls.Add(this.lblCurrSolution);
+            this.grB_DemoSolving.Location = new System.Drawing.Point(367, 6);
+            this.grB_DemoSolving.Name = "grB_DemoSolving";
+            this.grB_DemoSolving.Size = new System.Drawing.Size(746, 561);
+            this.grB_DemoSolving.TabIndex = 9;
+            this.grB_DemoSolving.TabStop = false;
+            this.grB_DemoSolving.Text = "Демонстрація процесу розв\'язання";
             // 
-            // label2
+            // lblCurrSettingsAlgorithm
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "label2";
+            this.lblCurrSettingsAlgorithm.AutoSize = true;
+            this.lblCurrSettingsAlgorithm.Location = new System.Drawing.Point(10, 46);
+            this.lblCurrSettingsAlgorithm.Name = "lblCurrSettingsAlgorithm";
+            this.lblCurrSettingsAlgorithm.Size = new System.Drawing.Size(9, 13);
+            this.lblCurrSettingsAlgorithm.TabIndex = 11;
+            this.lblCurrSettingsAlgorithm.Text = "l";
             // 
-            // label1
+            // lblCurrFitFunc
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "label1";
+            this.lblCurrFitFunc.AutoSize = true;
+            this.lblCurrFitFunc.Location = new System.Drawing.Point(10, 26);
+            this.lblCurrFitFunc.Name = "lblCurrFitFunc";
+            this.lblCurrFitFunc.Size = new System.Drawing.Size(9, 13);
+            this.lblCurrFitFunc.TabIndex = 10;
+            this.lblCurrFitFunc.Text = "l";
             // 
-            // tabControl2
+            // tbC_Visualization
             // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbC_Visualization.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Location = new System.Drawing.Point(9, 69);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(734, 309);
-            this.tabControl2.TabIndex = 9;
+            this.tbC_Visualization.Controls.Add(this.tbP_VisualizationStateSolving);
+            this.tbC_Visualization.Controls.Add(this.tbP_);
+            this.tbC_Visualization.Location = new System.Drawing.Point(6, 121);
+            this.tbC_Visualization.Name = "tbC_Visualization";
+            this.tbC_Visualization.SelectedIndex = 0;
+            this.tbC_Visualization.Size = new System.Drawing.Size(740, 379);
+            this.tbC_Visualization.TabIndex = 9;
             // 
-            // tabPage3
+            // tbP_VisualizationStateSolving
             // 
-            this.tabPage3.Controls.Add(this.chtDemoState);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(726, 283);
-            this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tbP_VisualizationStateSolving.Controls.Add(this.chtDemoState);
+            this.tbP_VisualizationStateSolving.Location = new System.Drawing.Point(4, 22);
+            this.tbP_VisualizationStateSolving.Name = "tbP_VisualizationStateSolving";
+            this.tbP_VisualizationStateSolving.Padding = new System.Windows.Forms.Padding(3);
+            this.tbP_VisualizationStateSolving.Size = new System.Drawing.Size(732, 353);
+            this.tbP_VisualizationStateSolving.TabIndex = 0;
+            this.tbP_VisualizationStateSolving.Text = "Візуалізація поточного стану розв\'язанння задачі ";
+            this.tbP_VisualizationStateSolving.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // tbP_
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(726, 283);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tbP_.Location = new System.Drawing.Point(4, 22);
+            this.tbP_.Name = "tbP_";
+            this.tbP_.Padding = new System.Windows.Forms.Padding(3);
+            this.tbP_.Size = new System.Drawing.Size(726, 283);
+            this.tbP_.TabIndex = 1;
+            this.tbP_.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tbP__
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1116, 570);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // nUD_CountStepsLocalSearch
-            // 
-            this.nUD_CountStepsLocalSearch.Location = new System.Drawing.Point(68, 118);
-            this.nUD_CountStepsLocalSearch.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nUD_CountStepsLocalSearch.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.nUD_CountStepsLocalSearch.Name = "nUD_CountStepsLocalSearch";
-            this.nUD_CountStepsLocalSearch.Size = new System.Drawing.Size(79, 20);
-            this.nUD_CountStepsLocalSearch.TabIndex = 36;
-            this.nUD_CountStepsLocalSearch.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // lblCountStepsLocalSearch
-            // 
-            this.lblCountStepsLocalSearch.AutoSize = true;
-            this.lblCountStepsLocalSearch.Location = new System.Drawing.Point(24, 120);
-            this.lblCountStepsLocalSearch.Name = "lblCountStepsLocalSearch";
-            this.lblCountStepsLocalSearch.Size = new System.Drawing.Size(45, 13);
-            this.lblCountStepsLocalSearch.TabIndex = 37;
-            this.lblCountStepsLocalSearch.Text = "nstep = ";
-            // 
-            // clnMinX
-            // 
-            this.clnMinX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnMinX.HeaderText = "min";
-            this.clnMinX.Name = "clnMinX";
-            this.clnMinX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clnMaxX
-            // 
-            this.clnMaxX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnMaxX.HeaderText = "max";
-            this.clnMaxX.Name = "clnMaxX";
-            this.clnMaxX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.tbP__.Location = new System.Drawing.Point(4, 22);
+            this.tbP__.Name = "tbP__";
+            this.tbP__.Padding = new System.Windows.Forms.Padding(3);
+            this.tbP__.Size = new System.Drawing.Size(1116, 570);
+            this.tbP__.TabIndex = 1;
+            this.tbP__.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -842,7 +815,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1124, 596);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbC_Main);
             this.Name = "frmMain";
             this.Text = "Демонстрація алгоритму рою часток для випадку багатовимірної неперервної цільової" +
     " функції";
@@ -851,6 +824,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Restrictions)).EndInit();
             this.grB_SetParamsAlg.ResumeLayout(false);
             this.grB_SetParamsAlg.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUD_CountStepsLocalSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_Threshold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_MaxIterations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_MinInformants)).EndInit();
@@ -858,13 +832,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUD_SizeSwarm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_Dimensionality)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chtDemoState)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nUD_CountStepsLocalSearch)).EndInit();
+            this.tbC_Main.ResumeLayout(false);
+            this.tbP_SolvingOtimizationProblem.ResumeLayout(false);
+            this.grB_DemoSolving.ResumeLayout(false);
+            this.grB_DemoSolving.PerformLayout();
+            this.tbC_Visualization.ResumeLayout(false);
+            this.tbP_VisualizationStateSolving.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -891,28 +864,25 @@
         private System.Windows.Forms.Label lblCurrSolution;
         private System.Windows.Forms.Label lblValueCurrSolution;
         private System.Windows.Forms.Button btnNextIteration;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnToFinish;
         private System.Windows.Forms.NumericUpDown nUD_SizeSwarm;
         private System.Windows.Forms.Label lblSizeSwarm;
         private System.Windows.Forms.Label lblDimension;
         private System.Windows.Forms.NumericUpDown nUD_Dimensionality;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tbC_Main;
+        private System.Windows.Forms.TabPage tbP_SolvingOtimizationProblem;
+        private System.Windows.Forms.GroupBox grB_DemoSolving;
+        private System.Windows.Forms.Label lblCurrSettingsAlgorithm;
+        private System.Windows.Forms.Label lblCurrFitFunc;
+        private System.Windows.Forms.TabControl tbC_Visualization;
+        private System.Windows.Forms.TabPage tbP_VisualizationStateSolving;
+        private System.Windows.Forms.TabPage tbP_;
+        private System.Windows.Forms.TabPage tbP__;
         private System.Windows.Forms.Button btnSwitchMinMax;
         private System.Windows.Forms.Label lblSwitchMinMax;
         private System.Windows.Forms.GroupBox grB_SetParamsAlg;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblFitnessFunc;
+        private System.Windows.Forms.Label lblRestrictions;
         private System.Windows.Forms.DataGridView dGV_Restrictions;
         private System.Windows.Forms.ComboBox cmB_TypeTopology;
         private System.Windows.Forms.Label lblTypeTopology;

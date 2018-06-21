@@ -183,6 +183,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
                     }
                 }
                 _currSwarm.Communication();
+                Iteration++;
             }
         }
 

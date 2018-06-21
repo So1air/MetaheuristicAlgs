@@ -19,12 +19,12 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         public override void ModifyMethod(Particle<Vector, Vector> particleForModify, IArea<Vector> ranges)
         {            
             double[] randNumbers = new double[particleForModify.CurrPosition.Length];
-            for (int i = randNumbers.Length; i > 0; i--)
+            for (int i = randNumbers.Length - 1; i >= 0; i--)
                 randNumbers[i] = _accidentFactor.NextDouble();
             particleForModify.CurrSpeed = CInertiа * particleForModify.CurrSpeed + CСognitive * (randNumbers * (particleForModify.PersonalBest - particleForModify.CurrPosition));
             if (particleForModify.PersonalBest != particleForModify.InformantBest.PersonalBest)
             {
-                for (int i = randNumbers.Length; i > 0; i--)
+                for (int i = randNumbers.Length - 1; i >= 0; i--)
                     randNumbers[i] = _accidentFactor.NextDouble();
                 particleForModify.CurrSpeed += CSocial * (randNumbers * (particleForModify.InformantBest.PersonalBest - particleForModify.CurrPosition));
             }
@@ -32,7 +32,7 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
             //???????????????
             if ((CGlobal != 0) && (particleForModify.InformantBest.PersonalBest != _currSwarm.BestPosition))
             {
-                for (int i = randNumbers.Length; i > 0; i--) 
+                for (int i = randNumbers.Length - 1; i >= 0; i--) 
                     randNumbers[i] = _accidentFactor.NextDouble();
                 particleForModify.CurrSpeed += CGlobal * (randNumbers * (_currSwarm.BestPosition - particleForModify.CurrPosition));
             }

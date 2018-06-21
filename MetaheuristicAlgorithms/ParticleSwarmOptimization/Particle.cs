@@ -82,7 +82,9 @@ namespace Metaheuristics.PopulationAlgs.BehavioralAlgs
         {
             _informants.Clear();
             //потрібно скинути всі посилання на методи у події
-            //ChangePersonalBest.
+            //Delegate[] observers = ChangePersonalBest.GetInvocationList();
+            //for (int i = 0; i < observers.Length; i++)
+            //    ChangePersonalBest -= observers[i] as Action<Particle<TPos, TSpeed>>;           
         }
 
         public bool AddInformant(Particle<TPos, TSpeed> newInformant)
